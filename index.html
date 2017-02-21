@@ -4,19 +4,28 @@
 	<title>Minecraft Hangman</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/font.css">
-    <script type="test/javascript" src="assets/javascript/lodash.js"></script>
+    <script type="text/javascript" src="assets/javascript/lodash.min.js"></script>
+    <script>
+    function testfunc() {
+    	console.log("within testfunc")
+    	document.getElementById("currentWord").innerHTML =  _.concat([1, 2], [3, 4]).toString();
+    }
+    </script>
 </head>
 
-<!-- <body onload="newGame()"> -->
+<body onload="testfunc()">
 <body>
 <div class="container">
-	<div class="col-md=12">
+	<div class="col-md-12">
 		<span id="infoBanner"></span>
 	</div>
 </div>
 <div id="midsection" class="container">
 	<div class="col-md-6">
+	<span>Topic Image</span>
+	<img src="http://placehold.it/200x200">
 	<!-- put the image placeholder here -->
 	</div>
 	<div class="col-md-6">
@@ -37,5 +46,7 @@
 		</div>
 	</div>
 </div>
+<script src="assets/javascript/jquery.min.js"></script>
+<script src="assets/javascript/bootstrap.min.js"></script>
 </body>
 </html>
