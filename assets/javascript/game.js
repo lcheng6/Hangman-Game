@@ -1,6 +1,6 @@
 var game = function() {
 	var private = {
-		gameLevels = [
+		gameLevels: [
 			new gameLevel("blondie", null, null, 4),
 			new gameLevel("bonjovi", null, null, 4),
 			new gameLevel("metallica", null, null, 4),
@@ -9,10 +9,10 @@ var game = function() {
 			new gameLevel("Queeen", null, null, 4),
 			new gameLevel("Journey", null, null, 4),
 			new gameLevel("ThePolice", null, null, 4)	
-		];
-		guessString = "";
-		currentGameLevel = null;
-	}
+		],
+		guessString: "",
+		currentGameLevel: null
+	};
 
 	return {
 		takeGuessFromUser: function (inputChar) {
@@ -48,13 +48,13 @@ var game = function() {
 			result.resultString = _.join(gameLevelGuessResult.resultCharArray, ' ');
 
 			return result;
-		}
+		},
 		startNewGameLevel: function () {
 			//TODO: make sure the new level is different from the old level
 			guessString = "";
 			randomIndex = Math.floor(Math.random() * (private["gameLevel"].length()));
 			currentGameLevel = private["gameLevels"][randomIndex];
-		}
+		},
 		getCurrentGameLevel: function () {
 			return private["currentGameLevel"];
 		},
@@ -63,4 +63,9 @@ var game = function() {
 		},
 
 	}
+}
+
+document.onkeypress = function(event) {
+	var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
+	console.log(userGuess);
 }
