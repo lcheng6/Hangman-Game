@@ -1,9 +1,10 @@
-var gameLevel = function(answerString, cardImg, musicTrack) {
+var gameLevel = function(answerString, cardImg, musicTrack, numGuesses) {
 
 	var private = {
-		answerString: answerString.toLowerCase(),
+		answerString: answerString.toUpperCase(),
 		cardImg: cardImg,
-		musicTrack: musicTrack
+		musicTrack: musicTrack,
+		numGuesses: numGuesses
 	}
 
 	return {
@@ -13,7 +14,7 @@ var gameLevel = function(answerString, cardImg, musicTrack) {
 			//guesses is an string of characters that user has put in to guess 
 			//toward answerString
 			answerCharArray = answerString.split('');
-			gussesCharArray = guesses.toLowerCase().split('');
+			gussesCharArray = guesses.toUpperCase().split('');
 			resultCharArray = []
 			isMatched = true;
 			for (i = 0; i< answerString i++) {
@@ -27,11 +28,15 @@ var gameLevel = function(answerString, cardImg, musicTrack) {
 				}
 			}
 
+			numDifferences = _.union([answerCharArray, gussesCharArray]).length() - 
+				_.intersection([answerCharArray, gussesCharArray]).length();
+
 			result = {
-				resultArray: resultCharArray
-				isMatched: isMatched
+				resultArray: resultCharArray,
+				isMatched: isMatched,
+				numDifferences: numDifferences
 			}
-			return resultCharArray;
+			return result;
 		}
 
 		getMusicTrack() {
@@ -40,7 +45,9 @@ var gameLevel = function(answerString, cardImg, musicTrack) {
 		getCardImg() {
 			return private["cardImg"];
 		}
-
+		getNumGuesses() {
+			return private ["numGuesses"];
+		}
 
 	}
 
