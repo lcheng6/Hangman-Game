@@ -29,7 +29,7 @@ var game = function() {
 				return false;
 			}
 		},
-		evaluateGuessesAgainstLevel: function () {
+		evaluateGuessesAgainstLevel: function (guessString) {
 			//return game state: 
 			//fail: number of guesses exceeded
 			//win: user has correctly guessed the entire string
@@ -56,6 +56,7 @@ var game = function() {
 			//TODO: make sure the new level is different from the old level
 			guessString = "";
 			randomIndex = Math.floor(Math.random() * (private["gameLevels"].length));
+			randomIndex = 0;
 			private["currentGameLevel"] = private["gameLevels"][randomIndex];
 		},
 		getCurrentGameLevel: function () {
@@ -63,29 +64,40 @@ var game = function() {
 		},
 		getGuessString: function() {
 			return private["guessString"];
-		},
-
+		}
 	}
 }
 
 hangmanGame = new game();
 hangmanGame.startNewGameLevel();
-initialResult = hangmanGame.evaluateGuessesAgainstLevel();
+initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
 $('#currentWord').text(initialResult.resultString);
 
-// document.onkeypress = function(event) {
-// 	var userGuessChar = String.fromCharCode(event.keyCode).toUpperCase();
-// 	//console.log(userGuessChar);
-// 	if(hangmanGame.takeGuessFromUser(userGuessChar) === true) {
-// 		guessResult = hangmanGame.evaluateGuessesAgainstLevel();
+document.onkeypress = function(event) {
+	var userGuessChar = String.fromCharCode(event.keyCode).toUpperCase();
+	//console.log(userGuessChar);
+	if(hangmanGame.takeGuessFromUser(userGuessChar) === true) {
 
-// 		if (guessResult.progress === "win") {
+		guessResult = hangmanGame.evaluateGuessesAgainstLevel(hangmanGame.getGuessString());
+		$('#pastGuesses').text(hangmanGame.getGuessString())
 
-// 		}else if (guessResult.progress === "fail") {
+		if (guessResult.progress === "win") {
+			alert("You Win");
+			hangmanGame.startNewGameLevel();
+			initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
+			$('#currentWord').text(initialResult.resultString);
+			$('#pastGusses').text("");
 
-// 		}else { //in progress
-// 			$('#currentWord').text(guessResult.guessString);
-// 		}
-// 	}
+		}else if (guessResult.progress === "fail") {
+			alert("You Lose! Next!")
+			hangmanGame.startNewGameLevel();
+			initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
+			$('#currentWord').text(initialResult.resultString);
+			$('#pastGusses').text("");
+
+		}else { //in progress
+			$('#currentWord').text(guessResult.resultString);
+		}
+	}
 	
-// }
+}
