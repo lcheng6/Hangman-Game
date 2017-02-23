@@ -86,14 +86,14 @@ document.onkeypress = function(event) {
 			hangmanGame.startNewGameLevel();
 			initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
 			$('#currentWord').text(initialResult.resultString);
-			$('#pastGusses').text("");
+			$('#pastGuesses').text("");
 
 		}else if (guessResult.progress === "fail") {
 			alert("You Lose! Next!")
 			hangmanGame.startNewGameLevel();
 			initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
 			$('#currentWord').text(initialResult.resultString);
-			$('#pastGusses').text("");
+			$('#pastGuesses').text("");
 
 		}else { //in progress
 			$('#currentWord').text(guessResult.resultString);

@@ -30,7 +30,7 @@ var gameLevel = function(answerString, cardImg, musicTrack, numGuesses) {
 
 			//numDifferences is basically number of guesses that have been used.  
 			numDifferences = _.union(answerCharArray, guessesCharArray).length - 
-				_.intersection(answerCharArray, guessesCharArray).length;
+				answerCharArray.length;
 
 			result = {
 				resultCharArray: resultCharArray,
