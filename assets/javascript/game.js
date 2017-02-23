@@ -48,7 +48,7 @@ var game = function() {
 					result.progress = "in progress";
 				}
 			}
-			result.resultString = _.join(gameLevelGuessResult.resultCharArray, ' ');
+			result.resultString = gameLevelGuessResult.resultCharArray.join(' ');
 
 			return result;
 		},
@@ -70,12 +70,22 @@ var game = function() {
 
 hangmanGame = new game();
 hangmanGame.startNewGameLevel();
+initialResult = hangmanGame.evaluateGuessesAgainstLevel();
+$('#currentWord').text(initialResult.resultString);
 
-document.onkeypress = function(event) {
-	var userGuessChar = String.fromCharCode(event.keyCode).toUpperCase();
-	//console.log(userGuessChar);
-	if(hangmanGame.takeGuessFromUser(userGuessChar) == true) {
-		hangmanGame.evaluateGuessesAgainstLevel();
-	}
+// document.onkeypress = function(event) {
+// 	var userGuessChar = String.fromCharCode(event.keyCode).toUpperCase();
+// 	//console.log(userGuessChar);
+// 	if(hangmanGame.takeGuessFromUser(userGuessChar) === true) {
+// 		guessResult = hangmanGame.evaluateGuessesAgainstLevel();
+
+// 		if (guessResult.progress === "win") {
+
+// 		}else if (guessResult.progress === "fail") {
+
+// 		}else { //in progress
+// 			$('#currentWord').text(guessResult.guessString);
+// 		}
+// 	}
 	
-}
+// }

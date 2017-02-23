@@ -17,14 +17,14 @@ var gameLevel = function(answerString, cardImg, musicTrack, numGuesses) {
 			gussesCharArray = guesses.toUpperCase().split('');
 			resultCharArray = []
 			isMatched = true;
-			for (i = 0; i< answerString; i++) {
+			for (i = 0; i< answerCharArray.length; i++) {
 				answerChar = answerCharArray[i];
-				if (_.findInex(guessesCharArray, answerChar) != -1) {
-					//GuessChar is within the answerCharArray
-					resultCharArray.push(answerChar);
-				}else {
+				if (gussesCharArray.indexOf(answerChar) == -1) {
+					//guessCharArray doesn't have a answer Char
 					resultCharArray.push('_');
 					isMatched = false;
+				}else {
+					resultCharArray.push(answerChar);
 				}
 			}
 
@@ -33,7 +33,7 @@ var gameLevel = function(answerString, cardImg, musicTrack, numGuesses) {
 				_.intersection([answerCharArray, gussesCharArray]).length;
 
 			result = {
-				resultArray: resultCharArray,
+				resultCharArray: resultCharArray,
 				isMatched: isMatched,
 				numDifferences: numDifferences
 			}
