@@ -28,8 +28,9 @@ var gameLevel = function(answerString, cardImg, musicTrack, numGuesses) {
 				}
 			}
 
-			numDifferences = _.union([answerCharArray, gussesCharArray]).length() - 
-				_.intersection([answerCharArray, gussesCharArray]).length();
+			//numDifferences is basically number of guesses that have been used.  
+			numDifferences = _.union([answerCharArray, gussesCharArray]).length - 
+				_.intersection([answerCharArray, gussesCharArray]).length;
 
 			result = {
 				resultArray: resultCharArray,

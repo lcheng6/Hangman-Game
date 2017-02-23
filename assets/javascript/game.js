@@ -1,3 +1,4 @@
+
 var game = function() {
 	var private = {
 		gameLevels: [
@@ -18,9 +19,11 @@ var game = function() {
 		takeGuessFromUser: function (inputChar) {
 			//return true if the inputChar is new, and inputChar is entered into guessString.
 			//return false if the inputChar already exists in the guessString
-			if (_.findInex(private["guessString"], inputChar) != -1) {
+			if (private["guessString"].indexOf(inputChar) == -1) {
 				//inputChar is new
 				private["guessString"] = private["guessString"] + inputChar;
+				console.log(private["guessString"]);
+
 				return true;
 			}else {
 				return false;
@@ -52,8 +55,8 @@ var game = function() {
 		startNewGameLevel: function () {
 			//TODO: make sure the new level is different from the old level
 			guessString = "";
-			randomIndex = Math.floor(Math.random() * (private["gameLevel"].length()));
-			currentGameLevel = private["gameLevels"][randomIndex];
+			randomIndex = Math.floor(Math.random() * (private["gameLevels"].length));
+			private["currentGameLevel"] = private["gameLevels"][randomIndex];
 		},
 		getCurrentGameLevel: function () {
 			return private["currentGameLevel"];
@@ -65,7 +68,14 @@ var game = function() {
 	}
 }
 
+hangmanGame = new game();
+hangmanGame.startNewGameLevel();
+
 document.onkeypress = function(event) {
-	var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
-	console.log(userGuess);
+	var userGuessChar = String.fromCharCode(event.keyCode).toUpperCase();
+	//console.log(userGuessChar);
+	if(hangmanGame.takeGuessFromUser(userGuessChar) == true) {
+		hangmanGame.evaluateGuessesAgainstLevel();
+	}
+	
 }
