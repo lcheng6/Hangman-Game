@@ -73,6 +73,8 @@ hangmanGame.startNewGameLevel();
 initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
 $('#currentWord').text(initialResult.resultString);
 
+
+//TODO: clean this section up
 document.onkeypress = function(event) {
 	var userGuessChar = String.fromCharCode(event.keyCode).toUpperCase();
 	//console.log(userGuessChar);
