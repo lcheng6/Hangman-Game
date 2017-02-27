@@ -3,8 +3,8 @@
 <head>
 	<title>Minecraft Hangman</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/font.css">
     <script type="text/javascript" src="assets/javascript/lodash.min.js"></script>
 
@@ -19,17 +19,30 @@
 <body onload="testfunc()">
 <body>
 <div class="container">
+	<div id="banner" class="row col-md-12">
+		<img src="http://placehold.it/1200x400">
+	</div>
+	<div id="subbanner">
+		<!--put in the 80s neon sign-->
+	</div>
+</div>
+<div class="container">
 	<div class="col-md-12">
 		<span id="infoBanner"></span>
 	</div>
+
 </div>
 <div id="midsection" class="container">
-	<div class="col-md-6">
-	<span>Topic Image</span>
-	<img src="http://placehold.it/200x200">
-	<!-- put the image placeholder here -->
+	<div class="col-md-6 col-xs-6">
+		<div class="row">
+		<span>Topic Image</span>
+		</div>
+		<div class="row">
+			<img src="http://placehold.it/200x200">
+			<!-- put the image placeholder here -->
+		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 col-xs-6">
 		<div id="instruction">
 			<span>Press any key to get started</span>
 		</div>
