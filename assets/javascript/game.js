@@ -2,17 +2,22 @@
 var game = function() {
 	var private = {
 		gameLevels: [
-			new gameLevel("blondie", null, null, 4),
-			new gameLevel("bonjovi", null, null, 4),
-			new gameLevel("metallica", null, null, 4),
-			new gameLevel("CultureClub", null, null, 4),
-			new gameLevel("Foreigner", null, null, 4),
-			new gameLevel("Queeen", null, null, 4),
-			new gameLevel("Journey", null, null, 4),
-			new gameLevel("ThePolice", null, null, 4)	
+			new gameLevel("blondie", "game/Blondie/Blondie2.jpg", "game/Blondie/Blondie-HeartOfGlass.mp3", 4),
+			//new gameLevel("bonjovi", "/game/", null, 4),
+			new gameLevel("metallica", "game/Metallica/Metallica2.jpg", "game/Metallica/Metallica-One.mp3", 4),
+			new gameLevel("metallica", "game/Metallica/Metallica2.jpg", "game/Metallica/Metallica-Master-Of-Puppets.mp3", 4),
+			new gameLevel("metallica", "game/Metallica/Metallica2.jpg", "game/Metallica/Metallica-For-Whom-The-Bell-Tolls.mp3", 4),
+			new gameLevel("CultureClub", "game/CultureClub/cultureclub.jpg", "game/CultureClub/Culture-Club-Karma-Chameleon.mp3", 4),
+			new gameLevel("Foreigner", "game/Foreigner/foreigner.jpg", "game/Foreigner/Foreigner-I-Want-To-Know-What-Love-Is.mp3", 4),
+			new gameLevel("Queeen", "game/Queen/Queen2.jpg", "game/Queen/Queen-Under-The-Pressure.mp3", 4),
+			new gameLevel("Queeen", "game/Queen/Queen2.jpg", "game/Queen/Queen-We-Are-The-Champions.mp3", 4),
+			new gameLevel("Journey", "game/Journey/Journey.jpg", "game/Journey/Journey-Dont-Stop-Believing.mp3", 4),
+			new gameLevel("Journey", "game/Journey/Journey.jpg", "game/Journey/Journey-Whos-Crying-Now.mp3", 4),
+			new gameLevel("ThePolice", "game/ThePolice/ThePolice2.jpg", "game/ThePolice/The-Police-Roxanne.mp3", 4)	
 		],
 		guessString: "",
-		currentGameLevel: null
+		currentGameLevel: null,
+		titleTrack:"game/Title/Push-It-To-The-Limit.mp3"
 	};
 
 	return {
@@ -58,6 +63,8 @@ var game = function() {
 			randomIndex = Math.floor(Math.random() * (private["gameLevels"].length));
 			randomIndex = 0;
 			private["currentGameLevel"] = private["gameLevels"][randomIndex];
+
+			$('#topicImage').attr('src', private["currentGameLevel"].getCardImg())
 		},
 		getCurrentGameLevel: function () {
 			return private["currentGameLevel"];
