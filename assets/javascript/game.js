@@ -76,9 +76,13 @@ var game = function() {
 }
 
 hangmanGame = new game();
+
+var audioElement, audioString;
+
 hangmanGame.startNewGameLevel();
 initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
 $('#currentWord').text(initialResult.resultString);
+
 
 
 //TODO: clean this section up
@@ -96,6 +100,9 @@ document.onkeypress = function(event) {
 			initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
 			$('#currentWord').text(initialResult.resultString);
 			$('#pastGuesses').text("");
+			audioString = hangmanGame.getCurrentGameLevel().getMusicTrack();
+			audioElement.setAttribute("src", audioString)
+			audioElement.play();
 
 		}else if (guessResult.progress === "fail") {
 			alert("You Lose! Next!")
@@ -103,10 +110,20 @@ document.onkeypress = function(event) {
 			initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
 			$('#currentWord').text(initialResult.resultString);
 			$('#pastGuesses').text("");
+			audioString = hangmanGame.getCurrentGameLevel().getMusicTrack();
+			audioElement.setAttribute("src", audioString)
+			audioElement.play();
 
 		}else { //in progress
 			$('#currentWord').text(guessResult.resultString);
 		}
 	}
-	
 }
+
+//Playing the music . 
+$(document).ready(function() {
+	audioElement = document.createElement("audio");
+	var audioString = hangmanGame.getCurrentGameLevel().getMusicTrack();
+	audioElement.setAttribute("src", audioString)
+	audioElement.play();
+})
