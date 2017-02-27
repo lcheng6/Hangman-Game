@@ -12,4 +12,32 @@ h1 {
 
 #banner img{
 	max-width: 100%;
+	clear:both;
+}
+
+#midsection {
+	/*background-image:url('http://placehold.it/400x300');*/
+	height:600px;
+}
+#leftmidsection {
+	height:400px;
+}
+#leftmidsection span {
+	margin:auto;
+	text-align:center;
+	display:block;
+	color:white;
+}
+#leftmidsection img {
+	clear:both;
+	padding-top:20px;
+	max-width:100%;
+}
+
+#rightmidsection {
+	height:400px;
+}
+
+#rightmidsection span, p {
+	color:white;
 }
