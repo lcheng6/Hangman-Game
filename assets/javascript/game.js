@@ -61,7 +61,7 @@ var game = function() {
 			//TODO: make sure the new level is different from the old level
 			guessString = "";
 			randomIndex = Math.floor(Math.random() * (private["gameLevels"].length));
-			randomIndex = 0;
+			//randomIndex = 0;
 			private["currentGameLevel"] = private["gameLevels"][randomIndex];
 
 			$('#topicImage').attr('src', private["currentGameLevel"].getCardImg())
