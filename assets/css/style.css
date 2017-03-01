@@ -14,9 +14,28 @@ h1 {
 	max-width: 100%;
 	clear:both;
 }
+#subbanner {
+	/*position:absolute;*/
+	margin-top:-190px;
+
+}
+#subbanner img{
+	/*position:relative;*/
+	max-width: 100%;
+	-ms-transform:rotate(-30deg);
+	-webkit-transform:rotate(-30deg);
+	transform:rotate(-30deg);
+	clear:none;
+	z-index: 30;
+	/*margin-top:-50px;*/
+	/*top:-50px;
+	margin:-100px;*/
+	/*top:-100px;*/
+}
 
 #midsection {
 	/*background-image:url('http://placehold.it/400x300');*/
+	margin-top:50px;
 	height:600px;
 }
 #leftmidsection {
@@ -32,6 +51,7 @@ h1 {
 	clear:both;
 	padding-top:20px;
 	max-width:100%;
+	z-index:2;
 }
 
 #rightmidsection {
