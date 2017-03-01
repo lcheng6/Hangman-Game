@@ -84,7 +84,23 @@ hangmanGame.startNewGameLevel();
 initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
 $('#currentWord').text(initialResult.resultString);
 
+var resetBoard = function() {
+	hangmanGame.startNewGameLevel();
+	initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
+	$('#currentWord').text(initialResult.resultString);
+	$('#pastGuesses').text("");
+	audioString = hangmanGame.getCurrentGameLevel().getMusicTrack();
+	audioElement.setAttribute("src", audioString)
+	audioElement.play();
+}
 
+var youWin = function(){
+	alert("You Win");
+}
+
+var youLose = function() {
+	alert("You Lose")
+}
 
 //TODO: clean this section up
 document.onkeypress = function(event) {
@@ -96,24 +112,14 @@ document.onkeypress = function(event) {
 		$('#pastGuesses').text(hangmanGame.getGuessString())
 
 		if (guessResult.progress === "win") {
-			alert("You Win");
-			hangmanGame.startNewGameLevel();
-			initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
-			$('#currentWord').text(initialResult.resultString);
-			$('#pastGuesses').text("");
-			audioString = hangmanGame.getCurrentGameLevel().getMusicTrack();
-			audioElement.setAttribute("src", audioString)
-			audioElement.play();
+			$('#currentWord').text(guessResult.resultString);
+			setTimeout(resetBoard, 1000);
+			setTimeout(youWin, 1000);
 
 		}else if (guessResult.progress === "fail") {
-			alert("You Lose! Next!")
-			hangmanGame.startNewGameLevel();
-			initialResult = hangmanGame.evaluateGuessesAgainstLevel("");
-			$('#currentWord').text(initialResult.resultString);
-			$('#pastGuesses').text("");
-			audioString = hangmanGame.getCurrentGameLevel().getMusicTrack();
-			audioElement.setAttribute("src", audioString)
-			audioElement.play();
+			$('#currentWord').text(guessResult.resultString);
+			setTimeout(resetBoard, 1000);
+			setTimeout(youLose, 1000);
 
 		}else { //in progress
 			$('#currentWord').text(guessResult.resultString);
