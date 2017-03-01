@@ -3,7 +3,8 @@ var game = function() {
 	var private = {
 		gameLevels: [
 			new gameLevel("blondie", "game/Blondie/Blondie2.jpg", "game/Blondie/Blondie-HeartOfGlass.mp3", 4),
-			//new gameLevel("bonjovi", "/game/", null, 4),
+			new gameLevel("bonjovi", "game/BonJovi/Bon-Jovi2.jpg", "game/BonJovi/Bon-Jovi-Living-On-A-Prayer.mp3", 4),
+			new gameLevel("bonjovi", "game/BonJovi/Bon-Jovi2.jpg", "game/BonJovi/Bon-Jovi-You-Give-Love-A-Bad-Name.mp3", 4),
 			new gameLevel("metallica", "game/Metallica/Metallica2.jpg", "game/Metallica/Metallica-One.mp3", 4),
 			new gameLevel("metallica", "game/Metallica/Metallica2.jpg", "game/Metallica/Metallica-Master-Of-Puppets.mp3", 4),
 			new gameLevel("metallica", "game/Metallica/Metallica2.jpg", "game/Metallica/Metallica-For-Whom-The-Bell-Tolls.mp3", 4),
