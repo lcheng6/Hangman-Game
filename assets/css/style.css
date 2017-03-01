@@ -16,17 +16,18 @@ h1 {
 }
 #subbanner {
 	/*position:absolute;*/
-	margin-top:-190px;
+	margin-top:-200px;
 
 }
 #subbanner img{
 	/*position:relative;*/
-	max-width: 100%;
-	-ms-transform:rotate(-30deg);
-	-webkit-transform:rotate(-30deg);
-	transform:rotate(-30deg);
+	max-width: 70%;
+	-ms-transform:rotate(-15deg);
+	-webkit-transform:rotate(-15deg);
+	transform:rotate(-15deg);
 	clear:none;
 	z-index: 30;
+	margin-left:-50px;
 	position:relative;
 	/*margin-top:-50px;*/
 	/*top:-50px;
