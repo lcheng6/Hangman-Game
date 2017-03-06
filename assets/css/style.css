@@ -43,6 +43,7 @@ h1 {
 #leftmidsection {
 	height:400px;
 }
+
 #leftmidsection span {
 	margin:auto;
 	text-align:center;
@@ -51,7 +52,7 @@ h1 {
 }
 #leftmidsection img {
 	clear:both;
-	padding-top:20px;
+	padding-top:0px;
 	max-width:100%;
 	z-index:2;
 	position:relative;
@@ -59,6 +60,9 @@ h1 {
 
 #rightmidsection {
 	height:400px;
+	font-style: italic;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 28px;
 }
 
 #rightmidsection span, p {

@@ -105,32 +105,37 @@ var youLose = function() {
 //TODO: clean this section up
 document.onkeypress = function(event) {
 	var userGuessChar = String.fromCharCode(event.keyCode).toUpperCase();
-	//console.log(userGuessChar);
-	if(hangmanGame.takeGuessFromUser(userGuessChar) === true) {
+	if (userGuessChar.length === 1 && userGuessChar.match(/[A-Z]/i)) {
+		//console.log(userGuessChar);
+		if(hangmanGame.takeGuessFromUser(userGuessChar) === true) {
 
-		guessResult = hangmanGame.evaluateGuessesAgainstLevel(hangmanGame.getGuessString());
-		$('#pastGuesses').text(hangmanGame.getGuessString())
+			guessResult = hangmanGame.evaluateGuessesAgainstLevel(hangmanGame.getGuessString());
+			$('#pastGuesses').text(hangmanGame.getGuessString())
 
-		if (guessResult.progress === "win") {
-			$('#currentWord').text(guessResult.resultString);
-			setTimeout(resetBoard, 1000);
-			setTimeout(youWin, 1000);
+			if (guessResult.progress === "win") {
+				$('#currentWord').text(guessResult.resultString);
+				setTimeout(resetBoard, 1000);
+				setTimeout(youWin, 1000);
 
-		}else if (guessResult.progress === "fail") {
-			$('#currentWord').text(guessResult.resultString);
-			setTimeout(resetBoard, 1000);
-			setTimeout(youLose, 1000);
+			}else if (guessResult.progress === "fail") {
+				$('#currentWord').text(guessResult.resultString);
+				setTimeout(resetBoard, 1000);
+				setTimeout(youLose, 1000);
 
-		}else { //in progress
-			$('#currentWord').text(guessResult.resultString);
+			}else { //in progress
+				$('#currentWord').text(guessResult.resultString);
+			}
 		}
 	}
 }
 
 //Playing the music . 
+//TODO: play the title track
 $(document).ready(function() {
 	audioElement = document.createElement("audio");
 	var audioString = hangmanGame.getCurrentGameLevel().getMusicTrack();
 	audioElement.setAttribute("src", audioString)
 	audioElement.play();
 })
+
+
